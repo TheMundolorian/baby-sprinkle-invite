@@ -686,10 +686,235 @@
       }
     }
 
+    /* =========================
+      INTRO INVITATION ANIMATION
+    ========================= */
+
+    .intro-overlay {
+      position: fixed;
+      inset: 0;
+
+      background:
+        radial-gradient(circle at top, #6f4c3e, #2B1D1A);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      z-index: 9999;
+
+      animation:
+        fadeOutOverlay 1.2s ease forwards;
+
+      animation-delay: 4.8s;
+    }
+
+    .envelope-wrapper {
+      perspective: 1200px;
+
+      overflow: visible;
+    }
+
+    .envelope {
+      position: relative;
+
+      width: 340px;
+      height: 220px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #b8875c,
+          #8a5f46
+        );
+
+      border-radius: 0 0 18px 18px;
+
+      box-shadow:
+        0 30px 60px rgba(0,0,0,0.35);
+      
+    }
+
+    /* ENVELOPE FLAP */
+
+    .envelope-flap {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          145deg,
+          #d9b08c,
+          #b8875c
+        );
+
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 58%
+      );
+
+      transform-origin: top;
+
+      z-index: 9;
+
+      animation:
+        openFlap 1.5s ease forwards;
+
+      animation-delay: 1s;
+    }
+
+    /* INVITE CARD */
+
+    .invite-card {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      width: 88%;
+      height: 210px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #fffdfb,
+          #f7ece2
+        );
+
+      border-radius: 16px;
+
+      padding: 30px 24px;
+
+      text-align: center;
+
+      box-shadow:
+        0 12px 30px rgba(0,0,0,0.15);
+
+      z-index: 1;
+
+      opacity: 0;
+
+      animation:
+        fadeInInvite 0.8s ease forwards;
+
+      animation-delay: 2.5s;
+    }
+
+    .invite-small {
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      font-size: 0.72rem;
+
+      color: #8a5f46;
+
+      margin-bottom: 18px;
+    }
+
+    .invite-card h2 {
+      font-family: 'Playfair Display', serif;
+
+      color: #4A342E;
+
+      font-size: 2rem;
+
+      line-height: 1.2;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes openFlap {
+
+      0% {
+        transform: rotateX(0deg);
+      }
+
+      100% {
+        transform: rotateX(-180deg);
+      }
+    }
+
+    @keyframes fadeInInvite {
+
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOutOverlay {
+
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .envelope {
+        width: 280px;
+        height: 190px;
+      }
+
+      .invite-card {
+        height: 180px;
+        padding: 24px 18px;
+      }
+
+      .invite-card h2 {
+        font-size: 1.6rem;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+
+
+  <!-- INVITATION INTRO -->
+
+  <div class="intro-overlay" id="introOverlay">
+
+    <div class="envelope-wrapper">
+
+      <div class="envelope">
+
+        <div class="envelope-flap"></div>
+
+        <div class="invite-card">
+
+          <p class="invite-small">
+            You're Invited
+          </p>
+
+          <h2>
+            A Little S’more Love<br>
+            Is On The Way
+          </h2>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- EMBERS -->
 
@@ -1070,6 +1295,16 @@
       }
 
     }, 1000);
+
+  </script>
+
+  <script>
+
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
+      document.body.style.overflow = 'auto';
+    }, 5000);
 
   </script>
 
