@@ -880,6 +880,246 @@
         font-size: 1.6rem;
       }
     }
+    /* =========================
+    GENDER REVEAL
+    ========================= */
+
+    .reveal-card{
+    cursor:pointer;
+    transition:.3s ease;
+    }
+
+    .reveal-card:hover{
+    transform:translateY(-5px);
+    }
+
+    .reveal-modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.4s ease;
+
+    z-index:10000;
+    }
+
+    .reveal-modal.active{
+    opacity:1;
+    visibility:visible;
+    }
+
+    .reveal-content{
+    background:white;
+
+    width:min(500px,90%);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    text-align:center;
+
+    position:relative;
+    }
+
+    .close-reveal{
+    position:absolute;
+    top:15px;
+    right:15px;
+
+    border:none;
+    background:none;
+
+    font-size:1.4rem;
+    cursor:pointer;
+    }
+
+    .campfire {
+    margin: 40px auto;
+    width: 180px;
+    height: 220px;
+    position: relative;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    }
+
+    /* logs */
+    .logs {
+    position: relative;
+    width: 110px;
+    height: 16px;
+    background: #7A5747;
+    border-radius: 20px;
+    transform: rotate(20deg);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+
+    .logs::after {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 16px;
+    background: #7A5747;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    transform: rotate(-40deg);
+    }
+
+    /* flame */
+
+    .flame{
+    position:absolute;
+
+    left:50%;
+    bottom:50px;
+
+    width:80px;
+    height:120px;
+
+    transform:translateX(-50%);
+
+    border-radius:
+        50% 50% 40% 40%;
+
+    background:
+        radial-gradient(
+        circle at 50% 30%,
+        #ffd77a,
+        #ff8f00 60%,
+        #ff4f00
+        );
+
+    animation:
+        flicker .25s infinite alternate;
+
+    box-shadow:
+        0 0 30px #ff8f00,
+        0 0 70px #ff8f00;
+    }
+
+    @keyframes flicker{
+
+    from{
+        transform:
+        translateY(-55%)
+        translateX(-10%)
+        scale(1);
+    }
+
+    to{
+        transform:
+        translateY(-50%)
+        translateX(-10%)
+        scale(1.06);
+    }
+    }
+
+    .reveal-text{
+    opacity:0;
+    transform:translateY(20px);
+    transition:.8s ease;
+    font-family:'Playfair Display',serif;
+    font-size:2.5rem;
+    color:#ff5ba8;
+    }
+
+    .reveal-text.show{
+    opacity:1;
+    transform:translateY(0);
+    }
+
+    .mo-fire {
+    position: absolute;
+    bottom: 0px; /* tweak this slightly if needed */
+    left: 34%;
+    transform: translateX(-45%);
+    width: 150px;
+    filter: drop-shadow(0 0 10px rgba(255,140,0,0.6));
+    }
+
+
+    @keyframes flameColorPink1 {
+    0%   { fill:#F36E21; }  
+    20%  { fill:#F77B3A; }
+    40%  { fill:#FF6A6F; }
+    60%  { fill:#FF5A8C; }  
+    100%  { fill:#FF4EA8; }  
+    /*100% { fill:#E0579B; }*/
+    }
+
+
+    @keyframes flameColorPink2 {
+    0%   { fill:#F6891F; }
+    20%  { fill:#F9A248; }
+    40%  { fill:#FF8A8A; }
+    60%  { fill:#FF78A8; }
+    100%  { fill:#FF6FB8; }
+    /*100% { fill:#dd7cb0; }*/
+    }
+
+    @keyframes flameColorPink3 {
+    0%   { fill:#FFD04A; }
+    20%  { fill:#FFE08A; }
+    40%  { fill:#FFCBAF; }
+    60%  { fill:#F7C1D8; }
+    100%  { fill:#F5BDD9; }
+    /*100% { fill:#FFE6F2; }*/
+    }
+
+
+    @keyframes flameColorPink4 {
+    0%   { fill:#FDBA16; }
+    20%  { fill:#FFC54A; }
+    40%  { fill:#FF9E7A; }
+    60%  { fill:#FF7BB5; }
+    100%  { fill:#FF9ED2; }
+    /*100% { fill:#FFCBE6; }*/
+    }
+
+
+    @keyframes flameColorPink5 {
+    0%   { fill:#F4A021; }
+    20%  { fill:#FAB061; }
+    40%  { fill:#FF8C8C; }
+    60%  { fill:#FF6FAF; }
+    100%  { fill:#FF5DAE; }
+    /*100% { fill:#D76AA8; }*/
+    }
+
+    .mo-fire.reveal-pink .flame-main {
+    animation: flameColorPink1 2.5s ease-in-out forwards;
+    }
+
+    .mo-fire.reveal-pink .flame-main.one {
+    animation: flameColorPink2 2.5s ease-in-out forwards;
+    }
+
+    .mo-fire.reveal-pink .flame-main.two {
+    animation: flameColorPink3 2.5s ease-in-out forwards;
+    }
+
+    .mo-fire.reveal-pink .flame-main.three {
+    animation: flameColorPink4 2.5s ease-in-out forwards;
+    }
+
+    .mo-fire.reveal-pink .flame-main.four {
+    animation: flameColorPink2 2.5s ease-in-out forwards;
+    }
+
+    .mo-fire.reveal-pink .flame-main.five {
+    animation: flameColorPink3 2.5s ease-in-out forwards;
+    }
 
   </style>
 </head>
@@ -1004,13 +1244,13 @@
           alt="Campfire aesthetic"
         >
 
-        <div class="floating-card">
+        <div class="floating-card reveal-card" id="openReveal">
 
           <strong>
-            S’mores Bar Included
+            🔥 Gender Reveal
           </strong>
 
-          Cozy treats, warm drinks & sweet memories ♡
+          Click to reveal our little camper ♡
 
         </div>
 
@@ -1310,5 +1550,105 @@
 
   </script>
 
+    <!-- GENDER REVEAL MODAL -->
+
+    <div class="reveal-modal" id="revealModal">
+
+    <div class="reveal-content">
+
+        <button class="close-reveal" id="closeReveal">
+        ✕
+        </button>
+
+        <h2>Gender Reveal</h2>
+
+    <div class="campfire">
+    <div class="logs"></div>
+
+    <div class="mo-fire" id="campfireFlame">
+        <svg viewBox="0 0 125 189.864" xmlns="http://www.w3.org/2000/svg">
+
+        <path class="flame-main" fill="#F36E21"
+        d="M76.553,186.09c0,0-10.178-2.976-15.325-8.226s-9.278-16.82-9.278-16.82s-0.241-6.647-4.136-18.465
+        c0,0,3.357,4.969,5.103,9.938c0,0-5.305-21.086,1.712-30.418c7.017-9.333,0.571-35.654-2.25-37.534
+        c0,0,13.07,5.64,19.875,47.54c6.806,41.899,16.831,45.301,6.088,53.985"/>
+
+        <path class="flame-main one" fill="#F6891F"
+        d="M61.693,122.257c4.117-15.4,12.097-14.487-11.589-60.872c0,0,32.016,10.223,52.601,63.123
+        c20.585,52.899-19.848,61.045-19.643,61.582c0.206,0.537-19.401-0.269-14.835-18.532S57.576,137.656,61.693,122.257z"/>
+
+        <path class="flame-main two" fill="#FFD04A"
+        d="M81.657,79.192c0,0,11.549,24.845,3.626,40.02c-7.924,15.175-21.126,41.899-0.425,64.998
+        C84.858,184.21,125.705,150.905,81.657,79.192z"/>
+
+        <path class="flame-main three" fill="#FDBA16"
+        d="M99.92,101.754c0,0-23.208,47.027-12.043,80.072c0,0,32.741-16.073,20.108-45.79
+        C95.354,106.319,99.92,114.108,99.92,101.754z"/>
+
+        <path class="flame-main four" fill="#F36E21"
+        d="M103.143,105.917c0,0,8.927,30.753-1.043,46.868c-9.969,16.115-14.799,29.041-14.799,29.041
+        S134.387,164.603,103.143,105.917z"/>
+
+        <path class="flame-main five" fill="#FDBA16"
+        d="M62.049,104.171c0,0-15.645,67.588,10.529,77.655C98.753,191.894,69.033,130.761,62.049,104.171z"/>
+
+        </svg>
+        
+    </div>
+    </div>
+
+        <div class="reveal-text" id="revealText">
+        It's a Girl! 💕
+        </div>
+
+    </div>
+
+    </div>
+<script>
+
+const openReveal =
+  document.getElementById("openReveal");
+
+const revealModal =
+  document.getElementById("revealModal");
+
+const closeReveal =
+  document.getElementById("closeReveal");
+
+const flame =
+  document.getElementById("campfireFlame");
+
+const revealText =
+  document.getElementById("revealText");
+
+openReveal.addEventListener("click", () => {
+
+  revealModal.classList.add("active");
+
+  flame.classList.remove("girl");
+  revealText.classList.remove("show");
+
+  setTimeout(() => {
+    flame.classList.add("reveal-pink");
+  }, 3000);
+
+  setTimeout(() => {
+    revealText.classList.add("show");
+  }, 4500);
+
+});
+
+closeReveal.addEventListener("click", () => {
+  revealModal.classList.remove("active");
+});
+
+revealModal.addEventListener("click", (e) => {
+  if(e.target === revealModal){
+    revealModal.classList.remove("active");
+  }
+
+});
+
+</script>
 </body>
 </html>
