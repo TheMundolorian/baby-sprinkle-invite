@@ -880,6 +880,7 @@
         font-size: 1.6rem;
       }
     }
+
     /* =========================
     GENDER REVEAL
     ========================= */
@@ -1037,9 +1038,32 @@
     color:#ff5ba8;
     }
 
-    .reveal-text.show{
-    opacity:1;
-    transform:translateY(0);
+    .reveal-text.show {
+      opacity: 1;
+      transform: translateY(0);
+
+      text-shadow:
+        0 0 6px #fff,
+        0 0 12px #ff9ed2,
+        0 0 20px #ff5ba8,
+        0 0 30px #ff5ba8;
+
+      animation: shimmer 2s infinite alternate;
+    }
+
+    @keyframes shimmer {
+      from {
+        text-shadow:
+          0 0 6px #fff,
+          0 0 10px #ffb3e6,
+          0 0 18px #ff7ac3;
+      }
+      to {
+        text-shadow:
+          0 0 10px #fff,
+          0 0 18px #ff5ba8,
+          0 0 28px #ff5ba8;
+      }
     }
 
     .mo-fire {
@@ -1122,6 +1146,46 @@
 
     .mo-fire.reveal-pink .flame-main.five {
     animation: flameColorPink3 2.5s ease-in-out forwards;
+    }
+
+    /* SPARKLE CONTAINER */
+    .sparkles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    /* SHOW AFTER REVEAL */
+    .sparkles.show {
+      opacity: 1;
+    }
+
+    /* INDIVIDUAL SPARKLE */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #fff 0%, #ffc0e6 60%, transparent 100%);
+      border-radius: 50%;
+      animation: sparkleFloat 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px #ff9ed2);
+    }
+
+    /* FLOATING ANIMATION */
+    @keyframes sparkleFloat {
+      0% {
+        transform: translateY(0) scale(0.4);
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-60px) scale(1.2);
+        opacity: 0;
+      }
     }
 
   </style>
@@ -1558,6 +1622,7 @@
     <div class="reveal-modal" id="revealModal">
 
     <div class="reveal-content">
+      <div class="sparkles" id="sparkles"></div>
 
         <button class="close-reveal" id="closeReveal">
         ✕
@@ -1639,6 +1704,14 @@ openReveal.addEventListener("click", () => {
     revealText.classList.add("show");
   }, 4500);
 
+  setTimeout(() => {
+  revealText.classList.add("show");
+
+  createSparkles();
+  sparklesContainer.classList.add("show");
+
+}, 4500);
+
 });
 
 closeReveal.addEventListener("click", () => {
@@ -1651,6 +1724,51 @@ revealModal.addEventListener("click", (e) => {
   }
 
 });
+
+const sparklesContainer = document.getElementById("sparkles");
+
+function createSparkles() {
+  sparklesContainer.innerHTML = "";
+
+  const options = ["💎", "⭐"];
+
+  for (let i = 0; i < 30; i++) {
+    const sparkle = document.createElement("span");
+    sparkle.classList.add("sparkle");
+
+    const type = options[Math.floor(Math.random() * options.length)];
+
+    // 💎 PINK DIAMONDS
+    if (type === "💎") {
+      sparkle.innerHTML = "💎";
+      sparkle.style.background = "none";
+      sparkle.style.fontSize = "14px";
+
+      // pink glow
+      sparkle.style.filter =
+        "drop-shadow(0 0 6px #ff9ed2) drop-shadow(0 0 14px #ff5ba8)";
+    }
+
+    // ⭐ PURPLE STARS
+    if (type === "⭐") {
+      sparkle.innerHTML = "⭐";
+      sparkle.style.background = "none";
+      sparkle.style.fontSize = "13px";
+
+      // purple glow
+      sparkle.style.filter =
+        "drop-shadow(0 0 6px #c084fc) drop-shadow(0 0 14px #a855f7)";
+    }
+
+    // position
+    sparkle.style.left = Math.random() * 100 + "%";
+    sparkle.style.top = Math.random() * 100 + "%";
+
+    sparkle.style.animationDelay = Math.random() * 2 + "s";
+
+    sparklesContainer.appendChild(sparkle);
+  }
+}
 
 </script>
 </body>
