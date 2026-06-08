@@ -917,17 +917,20 @@
     }
 
     .reveal-content{
-    background:white;
+      background:white;
+      width:min(320px, 85%);
+      height:min(320px, 85%);
+      aspect-ratio:1 / 1;
+      border-radius:30px;
+      padding:30px;
+      text-align:center;
+      position:relative;
+      gap:10px;
 
-    width:min(500px,90%);
-
-    border-radius:30px;
-
-    padding:40px;
-
-    text-align:center;
-
-    position:relative;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;   /* vertical center */
+      align-items:center;       /* horizontal center */
     }
 
     .close-reveal{
@@ -943,7 +946,7 @@
     }
 
     .campfire {
-    margin: 40px auto;
+    margin: 150px auto 0;
     width: 180px;
     height: 220px;
     position: relative;
