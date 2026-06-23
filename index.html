@@ -553,9 +553,53 @@
       margin-bottom: 36px;
     }
 
-    form {
+    form,
+    .rsvp-form {
       display: grid;
       gap: 18px;
+    }
+
+    .rsvp-info {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .rsvp-contact-label {
+      font-size: 1rem;
+      color: #7f6b64;
+      margin-bottom: 6px !important;
+    }
+
+    .rsvp-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--dark-chocolate);
+      font-weight: 700;
+      margin-bottom: 28px !important;
+    }
+
+    .rsvp-phones {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .rsvp-phone-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      background: linear-gradient(135deg, var(--caramel), var(--milk-chocolate));
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: 0.3s ease;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+    }
+
+    .rsvp-phone-btn:hover {
+      transform: translateY(-4px);
     }
 
     input,
@@ -1494,62 +1538,29 @@
           We can’t wait to celebrate with you ♡
         </p>
 
-        <form
-          name="baby-sprinkle-rsvp"
-          method="POST"
-          data-netlify="true"
-        >
+        <div class="rsvp-info">
 
-          <input
-            type="hidden"
-            name="form-name"
-            value="baby-sprinkle-rsvp"
-          >
+          <p class="rsvp-contact-label">
+            Please RSVP to
+          </p>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-          >
+          <p class="rsvp-name">
+            Marcos or Chantelle Raymundo
+          </p>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          >
+          <div class="rsvp-phones">
 
-          <select
-            name="party-size"
-            required
-          >
+            <a href="sms:6036617717" class="rsvp-phone-btn">
+              📱 603-661-7717
+            </a>
 
-            <option value="">
-              Number Attending
-            </option>
+            <a href="sms:6033412644" class="rsvp-phone-btn">
+              📱 603-341-2644
+            </a>
 
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5+</option>
+          </div>
 
-          </select>
-
-          <textarea
-            name="message"
-            placeholder="Leave a sweet message for the parents-to-be..."
-          ></textarea>
-
-          <button
-            type="submit"
-            class="btn"
-          >
-            Send RSVP
-          </button>
-
-        </form>
+        </div>
 
       </div>
 
