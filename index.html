@@ -1266,6 +1266,19 @@
       to{transform:translateX(-100%);}
     }
 
+
+    .rsvp-card form button.btn {
+      width: 100%;
+      margin-top: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .rsvp-card select {
+      color: var(--espresso);
+      background: white;
+    }
+
 </style>
 </head>
 
@@ -1273,7 +1286,7 @@
 
   <div class="raffle-banner">
     <div class="raffle-banner-track">
-      🎟️ There will be a diaper/wipe raffle. Please see additional details in S'more Details below  &nbsp;&nbsp;&nbsp; 🎟️ There will be a diaper/wipe raffle. Please see additional details in S'more Details below
+      🎟️ There will be a diaper/wipe raffle. Please see additional details below &nbsp;&nbsp;&nbsp; 🎟️ There will be a diaper/wipe raffle. Please see additional details below
     </div>
   </div>
 
@@ -1530,7 +1543,7 @@
             <h3>🔥 Activities/Raffle</h3>
 
             <p>
-              Activites TBD.<br>
+              Activities TBD.<br>
               Bring any size box of diapers (except newborn) to enter our raffle for a chance to win a prize!
             </p>
 
@@ -1576,31 +1589,73 @@
         <h2>RSVP</h2>
 
         <p>
-          We can’t wait to celebrate with you ♡
+          Please let us know if you'll be joining us around the campfire ♡
         </p>
 
-        <div class="rsvp-info">
+        <form id="rsvpForm">
 
-          <p class="rsvp-contact-label">
-            Please RSVP to
-          </p>
+          <input
+            type="text"
+            id="guestName"
+            name="name"
+            placeholder="Your Name"
+            required
+          >
 
-          <p class="rsvp-name">
-            Marcos or Chantelle Raymundo
-          </p>
+          <select
+            id="attending"
+            name="attending"
+            required
+          >
+            <option value="">
+              Number Attending
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+          </select>
 
-          <div class="rsvp-phones">
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Message (optional)"
+          ></textarea>
 
-            <a href="sms:6036617717" class="rsvp-phone-btn">
-              📱 603-661-7717
-            </a>
+          <button
+            type="submit"
+            class="btn"
+          >
+            🔥 Send RSVP
+          </button>
 
-            <a href="sms:6033412644" class="rsvp-phone-btn">
-              📱 603-341-2644
-            </a>
+        </form>
 
-          </div>
+        <div
+          id="successMessage"
+          style="
+            display:none;
+            text-align:center;
+            margin-top:20px;
+            color:#7A5747;
+            font-weight:600;
+          "
+        >
+          Thank you! Your RSVP has been received 🔥♡
+        </div>
 
+        <div
+          id="errorMessage"
+          style="
+            display:none;
+            text-align:center;
+            margin-top:20px;
+            color:#8b2f2f;
+            font-weight:600;
+          "
+        >
+          Something went wrong. Please try again.
         </div>
 
       </div>
@@ -1842,6 +1897,65 @@ setTimeout(() => {
     banner.style.visibility = 'visible';
   }
 }, 5000);
+</script>
+
+
+<script>
+
+const rsvpForm = document.getElementById("rsvpForm");
+
+if (rsvpForm) {
+  rsvpForm.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const successMessage =
+      document.getElementById("successMessage");
+
+    const errorMessage =
+      document.getElementById("errorMessage");
+
+    successMessage.style.display = "none";
+    errorMessage.style.display = "none";
+
+    const data = {
+      name:
+        document.getElementById("guestName").value,
+
+      attending:
+        document.getElementById("attending").value,
+
+      message:
+        document.getElementById("message").value
+    };
+
+    try {
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzZe1qj52LEQ1fukT3C-G4-2G5MOCahokL1JxNkfk7FxnZq7hYMQjTaAYrjH3Q1zIo_/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(data)
+        }
+      );
+
+      rsvpForm.reset();
+
+      successMessage.style.display = "block";
+
+    } catch(error) {
+
+      errorMessage.style.display = "block";
+
+    }
+
+  });
+}
+
 </script>
 
 </body>
