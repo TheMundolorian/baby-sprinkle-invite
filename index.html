@@ -1232,10 +1232,51 @@
       }
     }
 
-  </style>
+  
+    /* RAFFLE BANNER */
+    .raffle-banner{
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .6s ease;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:38px;
+      background:linear-gradient(135deg,var(--caramel),var(--milk-chocolate));
+      color:white;
+      z-index:10001;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      white-space:nowrap;
+      box-shadow:0 2px 10px rgba(0,0,0,.15);
+    }
+
+    .raffle-banner-track{
+      display:inline-block;
+      padding-left:100%;
+      animation:bannerScroll 18s linear infinite;
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    @keyframes bannerScroll{
+      from{transform:translateX(0);}
+      to{transform:translateX(-100%);}
+    }
+
+</style>
 </head>
 
 <body>
+
+  <div class="raffle-banner">
+    <div class="raffle-banner-track">
+      🎟️ There will be a diaper/wipe raffle. Please see additional details in S'more Details below  &nbsp;&nbsp;&nbsp; 🎟️ There will be a diaper/wipe raffle. Please see additional details in S'more Details below
+    </div>
+  </div>
+
 
 
   <!-- INVITATION INTRO -->
@@ -1792,5 +1833,16 @@ function createSparkles() {
 }
 
 </script>
+
+<script>
+setTimeout(() => {
+  const banner = document.querySelector('.raffle-banner');
+  if (banner) {
+    banner.style.opacity = '1';
+    banner.style.visibility = 'visible';
+  }
+}, 5000);
+</script>
+
 </body>
 </html>
