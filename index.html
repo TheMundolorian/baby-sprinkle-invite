@@ -686,10 +686,14 @@
       }
 
       .hero-image {
-        margin: 0 auto;
+        width: 100%;
+        max-width: 560px;
+        margin: 30px auto 0;
+        display: block;
       }
 
       .hero-image img {
+        width: 100%;
         max-height: 450px;
       }
 
@@ -704,11 +708,15 @@
 
       .floating-card {
         position: relative;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        margin: 18px auto 0;
+        text-align: center;
+      }
 
-        left: 0;
-        bottom: 0;
-
-        margin-top: 20px;
+      .reveal-card:hover {
+        transform: none;
       }
     }
 
@@ -750,10 +758,39 @@
 
       .hero-image img {
         max-height: none;
+        padding: 14px;
+        border-width: 8px;
+        border-bottom-width: 26px;
+        border-radius: 16px;
+      }
+
+      .hero-image img:hover {
+        transform: none;
+      }
+
+      .floating-card {
+        padding: 16px 18px;
+        border-radius: 20px;
       }
 
       .rsvp-card h2 {
         font-size: 2.2rem;
+      }
+
+      .details-wrapper {
+        border-radius: 28px;
+      }
+
+      .detail-card {
+        padding: 24px;
+      }
+
+      .raffle-banner {
+        height: 42px;
+      }
+
+      .raffle-banner-track {
+        font-size: 0.82rem;
       }
     }
 
@@ -1313,7 +1350,7 @@
 
   <div class="raffle-banner">
     <div class="raffle-banner-track">
-      🎟️ There will be a diaper/wipe raffle. Please see additional details below &nbsp;&nbsp;&nbsp; 🎟️ There will be a diaper/wipe raffle. Please see additional details below
+      🎟️ Help us stock up on diapers! Bring a box of diapers with your shower gift for raffle tickets and a chance to win a fun prize. &nbsp;&nbsp;&nbsp; 🎟️ Help us stock up on diapers! Bring a box of diapers with your shower gift for raffle tickets and a chance to win a fun prize.
     </div>
   </div>
 
@@ -1505,9 +1542,15 @@
             <h3>🔥 Activities/Raffle</h3>
 
             <p>
-              There will be activities and games!<br>
-              Bring a box of diapers for a chance to win a prize in the diaper raffle!<br>
-              (Anything other than newborn is preferred)
+              Activities TBD.<br><br>
+              Help us stock up on diapers! Guests who choose to bring a box of diapers along with their shower gift will receive raffle tickets for a chance to win a fun prize.
+            </p>
+
+            <p style="margin-top: 12px;">
+              <strong>Raffle Tickets:</strong><br>
+              Small box of diapers = 1 ticket<br>
+              Medium box of diapers = 2 tickets<br>
+              Large box of diapers = 3 tickets
             </p>
 
           </div>
