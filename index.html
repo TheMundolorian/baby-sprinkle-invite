@@ -374,16 +374,39 @@
     .hero-image {
       position: relative;
       z-index: 5;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: fit-content;
+      max-width: 100%;
+      margin-left: auto;
     }
 
     .hero-image img {
-      height: 700px;
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      max-height: 700px;
 
-      object-fit: cover;
+      object-fit: contain;
 
-      border-radius: 34px;
+      background: var(--milk-chocolate);
+      padding: 20px;
+      border: 10px solid var(--toasted-marshmallow);
+      border-bottom: 34px solid var(--toasted-marshmallow);
+      border-radius: 18px;
 
-      box-shadow: 0 25px 60px rgba(0,0,0,0.28);
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.30),
+        inset 0 0 18px rgba(255,255,255,0.08);
+
+      transition: transform .35s ease;
+    }
+
+    .hero-image img:hover {
+      transform: rotate(-1deg) scale(1.02);
     }
 
     .floating-card {
@@ -662,8 +685,12 @@
         font-size: 3.5rem;
       }
 
+      .hero-image {
+        margin: 0 auto;
+      }
+
       .hero-image img {
-        height: 450px;
+        max-height: 450px;
       }
 
       .countdown {
@@ -721,8 +748,8 @@
         font-size: 0.92rem;
       }
 
-      .gallery-card img {
-        height: 260px;
+      .hero-image img {
+        max-height: none;
       }
 
       .rsvp-card h2 {
@@ -1405,7 +1432,7 @@
       <div class="hero-image">
 
         <img
-          src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1200&auto=format&fit=crop"
+          src="https://raw.githubusercontent.com/TheMundolorian/baby-sprinkle-invite/master/Ultrasound.jpg"
           alt="Campfire aesthetic"
         >
 
@@ -1478,8 +1505,9 @@
             <h3>🔥 Activities/Raffle</h3>
 
             <p>
-              Activities TBD.<br>
-              Bring any size box of diapers (except newborn) to enter our raffle for a chance to win a prize!
+              There will be activities and games!<br>
+              Bring a box of diapers for a chance to win a prize in the diaper raffle!<br>
+              (Anything other than newborn is preferred)
             </p>
 
           </div>
